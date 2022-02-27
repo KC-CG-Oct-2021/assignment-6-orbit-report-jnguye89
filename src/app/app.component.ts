@@ -25,9 +25,6 @@ export class AppComponent {
 				for(let i=0; i < fetchedSatellites.length; i++) {
 					// create a Satellite object 
 					let satellite = new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
-					satellite.isSpaceDebris = function() {
-						return this.type == "Space Debris";
-					}
 					// add the new Satellite object to sourceList 
 					this.sourceList.push(satellite);
 				 }
