@@ -16,6 +16,10 @@ table {
  background: #dad8d8;
 }
 
+.highlight {
+	background: #E5FFCC;
+}
+
 .header-row {
 	background: #34495E;
 	color: #fff
