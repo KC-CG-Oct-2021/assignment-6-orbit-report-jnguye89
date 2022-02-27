@@ -25,13 +25,15 @@ export class AppComponent {
 				for(let i=0; i < fetchedSatellites.length; i++) {
 					// create a Satellite object 
 					let satellite = new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
+					satellite.isSpaceDebris = function() {
+						return this.type == "Space Debris";
+					}
 					// add the new Satellite object to sourceList 
 					this.sourceList.push(satellite);
 				 }
 
 				 // make a copy of the sourceList to be shown to the user
 				 this.displayList = this.sourceList.slice(0);
-	  
 			}.bind(this));
 		}.bind(this));
 
@@ -42,7 +44,9 @@ export class AppComponent {
 		searchTerm = searchTerm.toLowerCase();
 		for(let i=0; i < this.sourceList.length; i++) {
 			let name = this.sourceList[i].name.toLowerCase();
-			if (name.indexOf(searchTerm) >= 0) {
+			let orbitType = this.sourceList[i].orbitType.toLowerCase();
+			let type = this.sourceList[i].type.toLowerCase();
+			if (name.indexOf(searchTerm) >= 0 || orbitType.indexOf(searchTerm) >= 0 || type.indexOf(searchTerm) >= 0) {
 				matchingSatellites.push(this.sourceList[i]);
 			}
 		}
